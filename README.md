@@ -1,5 +1,5 @@
 # Datadog Custom Logger
-[![Open in VS Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/meet86/configuration-readme)
+[![Open in VS Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/meet86/datadog-custom-logger)
 ## Usage
 
 ### Steps
