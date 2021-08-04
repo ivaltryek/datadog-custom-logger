@@ -8,7 +8,7 @@
 - Install pip package
   
   ```shell
-  pip install datadog-custom-logger
+  pip install datadog-custom-logger==1.1.1
   ```
 - Import package
   
