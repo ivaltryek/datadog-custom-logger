@@ -1,4 +1,5 @@
 # Datadog Custom Logger
+[![PyPI version](https://badge.fury.io/py/datadog-custom-logger.svg)](https://badge.fury.io/py/datadog-custom-logger)  [![Open in VS Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/meet86/datadog-custom-logger)
 
 ## Usage
 
