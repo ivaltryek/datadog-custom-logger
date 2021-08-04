@@ -1,5 +1,6 @@
 # Datadog Custom Logger
-[![PyPI version](https://badge.fury.io/py/datadog-custom-logger.svg)](https://badge.fury.io/py/datadog-custom-logger)  [![Open in VS Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/meet86/datadog-custom-logger)
+[![PyPI](https://img.shields.io/pypi/v/datadog-custom-logger)](https://pypi.org/project/datadog-custom-logger/)
+  [![Open in VS Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/meet86/datadog-custom-logger)
 
 ## Usage
 
@@ -7,7 +8,7 @@
 - Install pip package
   
   ```shell
-  pip install datadog-custom-logger==0.1.0
+  pip install datadog-custom-logger
   ```
 - Import package
   
