@@ -1,5 +1,6 @@
 import os
 import logging
+import datetime
 from dateutil.parser import parse as dateutil_parser
 
 # Datadog python client dependencies.
@@ -18,10 +19,11 @@ LOG_LEVEL_ALERT_TYPE_MAPPINGS = {
 
 class DatadogCustomLogHandler(logging.Handler):
 
-    def __init__(self, tags=None, ** kwargs):
+    def __init__(self, tags=None, service="default", ** kwargs):
         super(DatadogCustomLogHandler, self).__init__(**kwargs)
 
         self.tags = tags
+        self.service = service
 
     def emit(self, record):
         text = self.format(record)
@@ -39,13 +41,16 @@ class DatadogCustomLogHandler(logging.Handler):
 
         # configuration.api_key['apiKeyAuth'] = os.environ['DD_CLIENT_API_KEY']
 
+        # Get UTC time and format it into default Datadog Python log pipeline standards.
+        time = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S,%f')[:-3]
+        
         with ApiClient(configuration) as api_client:
             api_instance = logs_api.LogsApi(api_client)
             body = HTTPLog([
                 HTTPLogItem(
                     ddsource="python",
-                    message=f"{record.levelname.upper()}:: {create_args['text']}",
-                    service="AZF",
+                    message=f"{time} {record.levelname.upper()} :: {create_args['text']}",
+                    service=self.service,
                     ddtags=self.tags +
                     f",level:{record.levelname}" if self.tags is not None else f"level:{record.levelname}"
                 )
