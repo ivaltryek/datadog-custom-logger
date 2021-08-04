@@ -4,6 +4,16 @@
 
 ## Usage
 
+>⚠️ Make sure to setup these 2 environment variables before using this package. You can either set them up by configuring the system environment variables or using python's os.environ[] method
+
+## Example
+ 
+ ```python
+ import os
+ os.environ["DD_API_KEY"] = "" #Your Datadog API Key
+ os.environ["DD_SITE"] = "datadoghq.com"
+ ```
+
 ### Steps
 - Install pip package
   
