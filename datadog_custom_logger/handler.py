@@ -52,8 +52,6 @@ class DatadogCustomLogHandler(logging.Handler):
             ])
         try:
             api_response = api_instance.submit_log(body)
-            from pprint import pprint
-            pprint(api_response)
         except ApiException as e:
             logging.info(
                 "Exception when calling LogsApi->submit_log: %s\n" % e)
