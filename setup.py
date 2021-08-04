@@ -12,7 +12,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="datadog-custom-logger",
-    version="0.1.0",
+    version="1.0.0",
     author="Meet Vasani",
     author_email="meet.vasani86@gmail.com",
     description="Logger Tool for Datadog logs monitoring",
