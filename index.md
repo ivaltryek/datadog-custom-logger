@@ -1,37 +1,60 @@
-## Welcome to GitHub Pages
+# Datadog Custom Logger
+[![PyPI](https://img.shields.io/pypi/v/datadog-custom-logger)](https://pypi.org/project/datadog-custom-logger/)
+  [![Open in VS Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/meet86/datadog-custom-logger)
 
-You can use the [editor on GitHub](https://github.com/meet86/datadog-custom-logger/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Usage
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+>⚠️ Make sure to setup these 2 environment variables before using this package. You can either set them up by configuring the system environment variables or using python's os.environ[] method
 
-### Markdown
+## Example
+ 
+ ```python
+ import os
+ os.environ["DD_API_KEY"] = "" #Your Datadog API Key
+ os.environ["DD_SITE"] = "datadoghq.com"
+ ```
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Steps
+- Install pip package
+  
+  ```shell
+  pip install datadog-custom-logger==1.1.1
+  ```
+- Import package
+  
+  ```python
+  from datadog_custom_logger import DatadogCustomLogHandler
+  ```
+- Initialize the handler
+  
+  ```python
+  datadog_custom_handler = DatadogCustomLogHandler(level=logging.INFO)  
+  ```
+  > 💡Note: if the level is set to logging.WARNING, you won't be able to see info or debug level logs.
 
-```markdown
-Syntax highlighted code block
+## Hierarchy:
+    - debug (logging.DEBUG)
+    - info (logging.INFO)
+    - warning (logging.WARNING)
+    - error (logging.ERROR)
+  
+- Attach the handler
+  
+  ```python
+  logging.basicConfig()
+  logger = logging.getLogger()
+  logger.addHandler(datadog_custom_handler)
+  logging.getLogger().setLevel(logging.INFO)
+  ```
+- Now simply log the logs
+  
+  ```python
+  # This statement won't be logged because the .setLevel() is set to logging.INFO.
+  # Please check the logging hierarchy for more.
+  logging.debug("This is debug level code")
+  # This will be logged as per .setLevel()
+  logging.info("This is info level logs")
+  ```
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/meet86/datadog-custom-logger/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+  ## Complete example:
+  [![datadog-logger-example](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/meet86/datadog-logger-example)
